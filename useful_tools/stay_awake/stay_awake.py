@@ -20,7 +20,7 @@ def derp():
         press('enter')
 
 
-if __name__ == '__main__':
+def stay_awake():
     time.sleep(3)
     while True:
         if datetime.now().time() > datetime.strptime("1800", "%H%M").time():
@@ -30,3 +30,7 @@ if __name__ == '__main__':
             time.sleep(random.randrange(200) + 120)
         except:
             pass
+
+
+if __name__ == '__main__':
+    stay_awake()
