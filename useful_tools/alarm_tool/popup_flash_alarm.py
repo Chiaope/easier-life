@@ -19,16 +19,22 @@ def scheduled_popup_flash_alert():
         total_seconds = (alarm_time - now).total_seconds()
         print(f"Sleeping for {total_seconds} seconds")
         time.sleep(total_seconds)
-        root = Tk()
-        root.attributes("-topmost", True)
-        root.configure(bg='red')
-        root.overrideredirect(True)
-        root.state('zoomed')
-        root.after(150, root.destroy)
-        root.mainloop()
+
+        for i in range(3):
+            single_flash_tk()
         alert(title='~~~~~~~~~~~~~~~~~~~~~~ POPUP ALERT ~~~~~~~~~~~~~~~~~~~~~~', text=f'{f"{description}!!" if description else "GET READY!!"}', button='OK')
     except Exception as e:
         print(f"Something is wrong: {e}")
+
+
+def single_flash_tk(color='red', delay=30):
+    root = Tk()
+    root.attributes("-topmost", True)
+    root.configure(bg=color)
+    root.overrideredirect(True)
+    root.state('zoomed')
+    root.after(delay, root.destroy)
+    root.mainloop()
 
 
 if __name__ == '__main__':
