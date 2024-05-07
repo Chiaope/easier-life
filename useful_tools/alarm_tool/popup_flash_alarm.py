@@ -22,7 +22,7 @@ def scheduled_popup_flash_alert():
 
         for i in range(3):
             single_flash_tk()
-        alert(title='~~~~~~~~~~~~~~~~~~~~~~ POPUP ALERT ~~~~~~~~~~~~~~~~~~~~~~', text=f'{f"{description}!!" if description else "GET READY!!"}', button='OK')
+        alert(title='~~~~~~~~~~~~~~~~~~~~~~ POPUP ALERT ~~~~~~~~~~~~~~~~~~~~~~', text=f'~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n{f"{description}!!" if description else "GET READY!!"}\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~~~', button='OK')
     except Exception as e:
         print(f"Something is wrong: {e}")
 
