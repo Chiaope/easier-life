@@ -52,7 +52,6 @@ class CursorUtils:
         if x and y:
             for i in range(10):
                 interval = interval_time + random.randrange(-100, 101) / 100
-                print(f"this is interval: {interval}")
                 if interval < 0:
                     continue
                 selected_movement_type = random.choice(pyautogui_mouse_movement_type)
