@@ -44,11 +44,8 @@ class CursorUtils:
     def random_cursor_movement(self, x, y, min_time=1):
         pyautogui_mouse_movement_type = [key for key in list(pyautogui.__dict__.keys()) if key.startswith('ease')]
         n_random_movements = random.randrange(10, 50)
-        print(f"this is n_random_movements: {n_random_movements}")
         total_time = min_time + random.randrange(100) / 100
-        print(f"this is total_time: {total_time}")
         interval_time = total_time / n_random_movements
-        print(f"this is interval_time: {interval_time}")
         if x and y:
             for i in range(10):
                 interval = interval_time + random.randrange(-100, 101) / 100
