@@ -60,12 +60,6 @@ class CursorUtils:
                 pyautogui.moveTo(random.randrange(50) + x, random.randrange(50) + y, interval, selected_movement)
             pyautogui.leftClick()
             time.sleep(random.randrange(100) / 100)
-            pyautogui.hotkey('ctrl', 'a')
-            time.sleep(random.randrange(1000) / 10000)
-            pyautogui.hotkey('ctrl', 'a')
-            time.sleep(random.randrange(1000) / 10000)
-            pyautogui.hotkey('ctrl', 'a')
-            time.sleep(random.randrange(1000) / 10000)
         return
 
 
@@ -74,7 +68,9 @@ def stay_awake():
     cursor_location = cursor_location_object.get_cursor_location()
     time.sleep(3)
     while True:
-        if datetime.now().time() > datetime.strptime("1800", "%H%M").time():
+        current_time = datetime.now().time()
+        print(f"Current time is: {datetime.now().time()}")
+        if current_time > datetime.strptime("1800", "%H%M").time():
             break
         try:
             cursor_location_object.random_cursor_movement(*cursor_location)
