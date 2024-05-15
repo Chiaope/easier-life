@@ -10,8 +10,10 @@ from pynput import mouse
 def derp():
     with open('word_file.txt', 'r') as word_file:
         n_words = random.randrange(10) + 1
-        word_list = random.sample(word_file.read().splitlines(), n_words)
+        word_list = [f"{datetime.now().time()}"]
 
+        word_list.extend(random.sample(word_file.read().splitlines(), n_words))
+        print(f"Typing: {word_list}")
         for word in word_list:
             for letter in word:
                 press(letter)
