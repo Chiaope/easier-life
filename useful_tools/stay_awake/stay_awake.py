@@ -1,3 +1,4 @@
+import os
 import random
 import time
 from datetime import datetime
@@ -9,7 +10,8 @@ from pynput import mouse
 
 def derp():
     print(f"Running derp")
-    with open('word_file.txt', 'r') as word_file:
+    file_path = os.path.join(os.path.dirname(__file__), 'word_file.txt')
+    with open(file_path, 'r') as word_file:
         n_words = random.randrange(10) + 1
         word_list = [f"{datetime.now().time()}"]
 
