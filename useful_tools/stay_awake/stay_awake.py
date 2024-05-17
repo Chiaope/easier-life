@@ -8,10 +8,13 @@ from pynput import mouse
 
 
 def derp():
+    print(f"Running derp")
     with open('word_file.txt', 'r') as word_file:
         n_words = random.randrange(10) + 1
-        word_list = random.sample(word_file.read().splitlines(), n_words)
+        word_list = [f"{datetime.now().time()}"]
 
+        word_list.extend(random.sample(word_file.read().splitlines(), n_words))
+        print(f"Typing: {word_list}")
         for word in word_list:
             for letter in word:
                 press(letter)
@@ -44,15 +47,11 @@ class CursorUtils:
     def random_cursor_movement(self, x, y, min_time=1):
         pyautogui_mouse_movement_type = [key for key in list(pyautogui.__dict__.keys()) if key.startswith('ease')]
         n_random_movements = random.randrange(10, 50)
-        print(f"this is n_random_movements: {n_random_movements}")
         total_time = min_time + random.randrange(100) / 100
-        print(f"this is total_time: {total_time}")
         interval_time = total_time / n_random_movements
-        print(f"this is interval_time: {interval_time}")
         if x and y:
             for i in range(10):
                 interval = interval_time + random.randrange(-100, 101) / 100
-                print(f"this is interval: {interval}")
                 if interval < 0:
                     continue
                 selected_movement_type = random.choice(pyautogui_mouse_movement_type)
@@ -60,12 +59,6 @@ class CursorUtils:
                 pyautogui.moveTo(random.randrange(50) + x, random.randrange(50) + y, interval, selected_movement)
             pyautogui.leftClick()
             time.sleep(random.randrange(100) / 100)
-            pyautogui.hotkey('ctrl', 'a')
-            time.sleep(random.randrange(1000) / 10000)
-            pyautogui.hotkey('ctrl', 'a')
-            time.sleep(random.randrange(1000) / 10000)
-            pyautogui.hotkey('ctrl', 'a')
-            time.sleep(random.randrange(1000) / 10000)
         return
 
 
@@ -74,7 +67,9 @@ def stay_awake():
     cursor_location = cursor_location_object.get_cursor_location()
     time.sleep(3)
     while True:
-        if datetime.now().time() > datetime.strptime("1800", "%H%M").time():
+        current_time = datetime.now().time()
+        print(f"Current time is: {datetime.now().time()}")
+        if current_time > datetime.strptime("1800", "%H%M").time():
             break
         try:
             cursor_location_object.random_cursor_movement(*cursor_location)
