@@ -83,4 +83,3 @@ def stay_awake():
 
 if __name__ == '__main__':
     stay_awake()
-    print(f"Testing push to main")
