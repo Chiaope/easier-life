@@ -7,7 +7,7 @@ from pyautogui import alert
 
 def scheduled_popup_flash_alert():
     set_alarm = input(f"Please enter alarm in HHMM format: ")
-    description = input(f"Add optional description:")
+    description = input(f"Add optional description: ")
     try:
         time_from_str = datetime.strptime(set_alarm, '%H%M').time()
         now = datetime.now()
