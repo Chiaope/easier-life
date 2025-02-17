@@ -1,8 +1,7 @@
 import time
 from datetime import datetime
 from tkinter import Tk
-
-from pyautogui import alert
+from popup_flash import popup_flash
 
 
 def scheduled_popup_flash_alert():
@@ -19,25 +18,7 @@ def scheduled_popup_flash_alert():
         total_seconds = (alarm_time - now).total_seconds()
         print(f"Sleeping for {total_seconds} seconds")
         time.sleep(total_seconds)
-
-        for i in range(3):
-            single_flash_tk()
-        alert(title='~~~~~~~~~~~~~~~~~~~~~~ POPUP ALERT ~~~~~~~~~~~~~~~~~~~~~~',
-              text=f'''
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              {f"{description}!!" if description else "GET READY!!"}
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              ''', button='OK')
+        popup_flash(description)
     except Exception as e:
         print(f"Something is wrong: {e}")
 
