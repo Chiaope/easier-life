@@ -64,14 +64,14 @@ class CursorUtils:
         return
 
 
-def stay_awake():
+def stay_awake(end_time="1800"):
     cursor_location_object = CursorUtils()
     cursor_location = cursor_location_object.get_cursor_location()
     time.sleep(3)
     while True:
         current_time = datetime.now().time()
         print(f"Current time is: {datetime.now().time()}")
-        if current_time > datetime.strptime("1800", "%H%M").time():
+        if current_time > datetime.strptime(end_time, "%H%M").time():
             break
         try:
             cursor_location_object.random_cursor_movement(*cursor_location)
